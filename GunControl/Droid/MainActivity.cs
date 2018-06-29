@@ -5,15 +5,15 @@ using Acr.UserDialogs;
 
 namespace GunControl.Droid
 {
-    [Activity(Theme = "@android:style/Theme.Material.Light", Label = "MyApp", MainLauncher = true)]  
+    [Activity(Theme = "@style/MyTheme", Label = "MyApp", MainLauncher = true)]  
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
-            UserDialogs.Init(this);
+            //global::Xamarin.Forms.Forms.Init(this, bundle);
+            //UserDialogs.Init(this);
             //LoadApplication(new App());
         }
 
