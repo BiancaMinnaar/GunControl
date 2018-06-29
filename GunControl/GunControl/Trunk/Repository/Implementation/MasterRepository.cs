@@ -4,9 +4,12 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using CorePCL;
+using GunControl.Implementation.View;
+using GunControl.Implementation.ViewModel;
 using GunControl.Interface.Repository;
 using GunControl.Root.Repository;
 using GunControl.Root.ViewModel;
+using GunControl.Trunk.ViewModel.Data;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
@@ -32,6 +35,8 @@ namespace GunControl.Trunk.Repository.Implementation
         {
             get { return _Reposetory; }
         }
+
+        public UserMode User => DataSorce.User;
 
         public void SetRootView(Page rootView)
         {
@@ -77,9 +82,14 @@ namespace GunControl.Trunk.Repository.Implementation
             Debug.WriteLine(JsonConvert.SerializeObject(objectToDump));
         }
 
+        public void SetUserModel(LoginViewModel model)
+        {
+            DataSorce.User.UserName = model.UserName;
+        }
+
         public void PushHomeView()
         {
-           // _Navigation.PushAsync(new HomeView());
+           _Navigation.PushAsync(new DashboardView());
         }
     }
 }

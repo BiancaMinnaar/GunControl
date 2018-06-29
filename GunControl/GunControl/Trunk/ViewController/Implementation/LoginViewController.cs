@@ -23,7 +23,10 @@ namespace GunControl.Implementation.ViewController
 
         public async Task Login()
         {
-            
+            await _Reposetory.Login(InputObject, (model) => 
+            {
+                _MasterRepo.SetUserModel(model);
+            });
         }
     }
 }

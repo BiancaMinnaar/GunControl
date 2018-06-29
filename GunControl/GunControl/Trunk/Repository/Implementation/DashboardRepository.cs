@@ -8,22 +8,20 @@ using GunControl.Root.Repository;
 
 namespace GunControl.Implementation.Repository
 {
-    public class LoginRepository<T> : ProjectBaseRepository, ILoginRepository<T>
+    public class DashboardRepository<T> : ProjectBaseRepository, IDashboardRepository<T>
         where T : BaseViewModel
     {
-        ILoginService<T> _Service;
+        IDashboardService<T> _Service;
 
-        public LoginRepository(IMasterRepository masterRepository, ILoginService<T> service)
+        public DashboardRepository(IMasterRepository masterRepository, IDashboardService<T> service)
             : base(masterRepository)
         {
             _Service = service;
         }
 
-        public async Task Login(LoginViewModel model, Action<T> completeAction)
+        public async Task Refresh(DashboardViewModel model, Action<T> completeAction)
         {
-            var serviceReturnModel = await _Service.Login(model);
-            //test Login
-            _MasterRepo.SetUserModel(model);
+            var serviceReturnModel = await _Service.Refresh(model);
             completeAction(serviceReturnModel);
         }
     }
