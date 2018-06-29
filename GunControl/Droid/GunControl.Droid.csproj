@@ -54,6 +54,7 @@
     <None Include="Properties\AndroidManifest.xml" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Injection\RestServiceDroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -87,6 +88,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>2.4.0.91020</Version>
+    </PackageReference>
+    <PackageReference Include="RestSharp">
+      <Version>106.3.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
