@@ -17,13 +17,12 @@ namespace GunControl.Implementation.Service
 
         public async Task Login(LoginViewModel model)
         {
-			//string requestURL = "/login";
-            string requestURL = "/get";
+			string requestURL = "/login";
             var httpMethod = BaseNetworkAccessEnum.Get;
             var parameters = new Dictionary<string, ParameterTypedValue>()
             {
-                //{"username", new ParameterTypedValue(model.UserName)},
-                //{"password", new ParameterTypedValue(model.Password)}
+                {"username", new ParameterTypedValue(model.UserName)},
+                {"password", new ParameterTypedValue(model.Password)}
             };
             await _NetworkInterfaceWithTypedParameters(requestURL, parameters, httpMethod);
         }
