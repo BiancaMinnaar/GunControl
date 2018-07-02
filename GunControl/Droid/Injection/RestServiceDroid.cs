@@ -142,17 +142,16 @@ namespace GunControl.Droid.Injection
             INetworkResponse<T> response;
             try
             {
-                throw new Exception("");
                 response = new RestRspns<T>(await client.ExecuteTaskAsync<T>((IRestRequest)req));
             }
-            catch (Exception excp)
+            catch (Exception)
             {
                 var resp = new RestRspns
                 {
                     StatusCode = HttpStatusCode.Conflict,
                     Content = "",
                     RawBytes = new byte[0],
-                    StatusDescription="There was a terrible mistake"
+                    StatusDescription = "The network URL " + Constants.BASE_URL + " is unreachable."
                 };
                 response = new RestRspns<T>(response: (RestSharp.IRestResponse)resp);
             }

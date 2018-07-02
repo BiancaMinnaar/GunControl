@@ -16,8 +16,8 @@ namespace GunControl.Implementation.ViewController
 
         public override void SetRepositories()
         {
-            _Service = new LoginService<LoginViewModel>((U, P, C) => 
-                                                           ExecuteQueryWithTypedParametersAndNetworkAccessAsync(U, P, C));
+            _Service = new LoginService<LoginViewModel>((U, P, C, A) => 
+                                                        ExecuteQueryWithReturnTypeAndNetworkAccessAsync<LoginViewModel>(U, P, C, A));
             _Reposetory = new LoginRepository<LoginViewModel>(_MasterRepo, _Service);
         }
 

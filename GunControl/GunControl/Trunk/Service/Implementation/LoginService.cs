@@ -7,10 +7,10 @@ using GunControl.Interface.Service;
 
 namespace GunControl.Implementation.Service
 {
-        public class LoginService<T> : BaseService, ILoginService<T>
+        public class LoginService<T> : BaseService<T>, ILoginService<T>
             where T : BaseViewModel
         {
-            public LoginService(Func<string, Dictionary<string, ParameterTypedValue>, BaseNetworkAccessEnum, Task> networkInterface)
+        public LoginService(Func<string, Dictionary<string, ParameterTypedValue>, BaseViewModel, BaseNetworkAccessEnum, Task<T>> networkInterface)
                 :base(networkInterface)
             {
             }
@@ -24,7 +24,7 @@ namespace GunControl.Implementation.Service
                 {"username", new ParameterTypedValue(model.UserName)},
                 {"password", new ParameterTypedValue(model.Password)}
             };
-            await _NetworkInterfaceWithTypedParameters(requestURL, parameters, httpMethod);
+            await _NetworkInterface(requestURL, parameters, null, httpMethod);
         }
     }
 }
