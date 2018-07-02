@@ -6,6 +6,8 @@ using BasePCL.Networking;
 using System.Net;
 using GunControl.Droid.Injection;
 using GunControl.Root;
+using System;
+using System.Collections.Generic;
 
 [assembly: Dependency(typeof(RestServiceDroid))]
 namespace GunControl.Droid.Injection
@@ -54,20 +56,42 @@ namespace GunControl.Droid.Injection
     public class RestRspns : INetworkResponse
     {
         IRestResponse _RestResponse;
-        public HttpStatusCode StatusCode => _RestResponse.StatusCode;
-        public string StatusDescription => _RestResponse.StatusDescription;
-        public string Content => _RestResponse.Content;
-        public byte[] RawBytes => _RestResponse.RawBytes;
+        public HttpStatusCode StatusCode
+        {
+            get;set;
+        }
+        public string StatusDescription
+        {
+            get; set;
+        }
+        public string Content
+        {
+            get; set;
+        }
+        public byte[] RawBytes
+        {
+            get; set;
+        }
+        public RestRspns(){}
 
         public RestRspns(IRestResponse response)
         {
             _RestResponse = response;
+            StatusCode = response.StatusCode;
+            StatusDescription = response.StatusDescription;
+            Content = response.Content;
+            RawBytes = response.RawBytes;
         }
     }
 
     public class RestRspns<T> : RestRspns, INetworkResponse<T> where T : BaseViewModel
     {
         IRestResponse<T> _RestResponse;
+
+        public RestRspns(IRestResponse response)
+            : base(response)
+        {
+        }
 
         public RestRspns(IRestResponse<T> response)
             : base(response)
@@ -93,15 +117,46 @@ namespace GunControl.Droid.Injection
         public async Task<INetworkResponse> ExecuteTaskAsync(INetworkRequest req)
         {
             var client = new RestClient(Constants.BASE_URL);
-            var response = await client.ExecuteTaskAsync((IRestRequest)req);
-            return new RestRspns(response);
+            INetworkResponse response;
+            try
+            {
+                response = new RestRspns(await client.ExecuteTaskAsync((IRestRequest)req));
+            }
+            catch (Exception)
+            {
+                var resp = new RestRspns
+                {
+                    StatusCode = HttpStatusCode.Conflict,
+                    Content = "",
+                    RawBytes = new byte[0],
+                    StatusDescription = "The network URL " + Constants.BASE_URL + " is unreachable."
+                };
+                response = (INetworkResponse)resp;
+            }
+            return response;
         }
 
         public async Task<INetworkResponse<T>> ExecuteTaskAsync<T>(INetworkRequest req) where T : BaseViewModel
         {
             var client = new RestClient(Constants.BASE_URL);
-            var response = await client.ExecuteTaskAsync<T>((IRestRequest)req);
-            return new RestRspns<T>(response);
+            INetworkResponse<T> response;
+            try
+            {
+                throw new Exception("");
+                response = new RestRspns<T>(await client.ExecuteTaskAsync<T>((IRestRequest)req));
+            }
+            catch (Exception excp)
+            {
+                var resp = new RestRspns
+                {
+                    StatusCode = HttpStatusCode.Conflict,
+                    Content = "",
+                    RawBytes = new byte[0],
+                    StatusDescription="There was a terrible mistake"
+                };
+                response = new RestRspns<T>(response: (RestSharp.IRestResponse)resp);
+            }
+            return response;
         }
     }
 }

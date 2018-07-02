@@ -19,6 +19,12 @@ namespace GunControl.Implementation.View
         {
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _ViewController.Refresh();
+        }
+
         public async void On_Refresh_Event(object sender, EventArgs e)
         {
             await _ViewController.Refresh();

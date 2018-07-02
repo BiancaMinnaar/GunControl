@@ -8,6 +8,6 @@ namespace GunControl.Interface.Repository
     public interface ILoginRepository<T>
         where T : BaseViewModel
     {
-        Task Login(LoginViewModel model, Action<T> completeAction);
+        Task Login(LoginViewModel model, Action completeAction);
     }
 }

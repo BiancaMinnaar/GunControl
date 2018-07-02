@@ -84,7 +84,7 @@ namespace GunControl.Trunk.Repository.Implementation
 
         public void SetUserModel(LoginViewModel model)
         {
-            DataSorce.User.UserName = model.UserName;
+            DataSorce.User = new UserMode { UserName = model.UserName };
         }
 
         public void PushHomeView()

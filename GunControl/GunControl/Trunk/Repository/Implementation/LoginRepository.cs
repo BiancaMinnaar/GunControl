@@ -19,12 +19,12 @@ namespace GunControl.Implementation.Repository
             _Service = service;
         }
 
-        public async Task Login(LoginViewModel model, Action<T> completeAction)
+        public async Task Login(LoginViewModel model, Action completeAction)
         {
-            var serviceReturnModel = await _Service.Login(model);
+            await _Service.Login(model);
             //test Login
             _MasterRepo.SetUserModel(model);
-            completeAction(serviceReturnModel);
+            completeAction();
         }
     }
 }

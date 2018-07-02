@@ -20,7 +20,8 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout HeightRequest="30"></StackLayout>
-            <StackLayout>
+            <StackLayout Orientation="Vertical">
+                <Label Text="User: " />
                 <Label Text="{Binding User.UserName}" />
             </StackLayout>
         </StackLayout>

@@ -16,16 +16,18 @@ namespace GunControl.Implementation.ViewController
 
         public override void SetRepositories()
         {
-            _Service = new LoginService<LoginViewModel>((U, P, C, A) => 
-                                                           ExecuteQueryWithReturnTypeAndNetworkAccessAsync<LoginViewModel>(U, P, C, A));
+            _Service = new LoginService<LoginViewModel>((U, P, C) => 
+                                                           ExecuteQueryWithTypedParametersAndNetworkAccessAsync(U, P, C));
             _Reposetory = new LoginRepository<LoginViewModel>(_MasterRepo, _Service);
         }
 
         public async Task Login()
         {
-            await _Reposetory.Login(InputObject, (model) => 
+            await _Reposetory.Login(InputObject, () =>
             {
-                _MasterRepo.SetUserModel(model);
+                _MasterRepo.SetUserModel(InputObject);
+                _MasterRepo.PushHomeView();
+
             });
         }
     }

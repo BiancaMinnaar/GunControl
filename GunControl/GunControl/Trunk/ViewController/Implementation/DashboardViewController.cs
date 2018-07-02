@@ -16,7 +16,7 @@ namespace GunControl.Implementation.ViewController
 
         public DashboardViewController()
         {
-            InputObject.User = _MasterRepo.User;
+            //InputObject.User = _MasterRepo.User;
         }
 
         public override void SetRepositories()
@@ -28,6 +28,7 @@ namespace GunControl.Implementation.ViewController
 
         public async Task Refresh()
         {
+            InputObject.User = _MasterRepo.User;
         }
     }
 }

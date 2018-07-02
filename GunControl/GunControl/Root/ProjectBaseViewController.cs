@@ -36,6 +36,7 @@ namespace GunControl.Root.ViewController
             {
                 string mys = e.NetworkCallMessage;
                 UserDialogs.Instance.Toast(new ToastConfig(e.NetworkCallMessage).SetDuration(TimeSpan.FromSeconds(5)).SetBackgroundColor(System.Drawing.Color.FromArgb(193, 57, 43)));
+                //UserDialogs.Instance.Toast(e.ErrorMessage, new TimeSpan(0,0,3));
             };
             base.NetworkCallInitialised += (sender, e) =>
             {
@@ -92,6 +93,7 @@ namespace GunControl.Root.ViewController
                 var toastOptions = new ToastConfig(message);
                 toastOptions.SetDuration(TimeSpan.FromSeconds(5));
                 toastOptions.SetBackgroundColor(System.Drawing.Color.Red);
+                //TODO:Toast Position Lost since v6 backwards.
                 //toastOptions.SetPosition(ToastPosition.Bottom);
                 toastOptions.SetMessageTextColor(System.Drawing.Color.White);
 
@@ -111,6 +113,7 @@ namespace GunControl.Root.ViewController
                 var toastOptions = new ToastConfig(message);
                 toastOptions.SetDuration(TimeSpan.FromSeconds(5));
                 toastOptions.SetBackgroundColor(System.Drawing.Color.Red);
+                //TODO:Toast Position Lost since v6 backwards.
                 //toastOptions.SetPosition(ToastPosition.Bottom);
                 toastOptions.SetMessageTextColor(System.Drawing.Color.White);
 
