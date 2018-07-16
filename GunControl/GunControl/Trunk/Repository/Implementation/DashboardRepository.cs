@@ -6,6 +6,7 @@ using GunControl.Interface.Repository;
 using GunControl.Interface.Service;
 using GunControl.Root.Repository;
 using GunControl.Trunk.Injection.Base;
+using GunControl.Trunk.Repository.Implementation;
 using Xamarin.Forms;
 
 namespace GunControl.Implementation.Repository
@@ -21,6 +22,11 @@ namespace GunControl.Implementation.Repository
         {
             _Service = service;
             _PlatformBonsai = DependencyService.Get<IPlatformBonsai<IPlatformModelBonsai>>();
+            var platform = new PlatformRepository<DashboardViewModel>(masterRepository);
+            platform.OnError = (errs) =>
+            {
+                OnError?.Invoke(errs);
+            };
         }
 
         public void OnFingerPrintRead()

@@ -8,6 +8,7 @@ namespace GunControl.Interface.Repository
     public interface IDashboardRepository<T>
         where T : BaseViewModel
     {
+        Action<string[]> OnError { get; set; }
         Task Refresh(DashboardViewModel model, Action<T> completeAction);
         void OnFingerPrintRead();
         void OnNFCRead();

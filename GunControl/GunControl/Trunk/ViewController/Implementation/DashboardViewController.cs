@@ -11,7 +11,7 @@ namespace GunControl.Implementation.ViewController
 {
     public class DashboardViewController : ProjectBaseViewController<DashboardViewModel>, IDashboardViewController
     {
-        IDashboardRepository<DashboardViewModel> _Reposetory;
+        IDashboardRepository<DashboardViewModel> _Repository;
         IDashboardService<DashboardViewModel> _Service;
 
         public DashboardViewController()
@@ -23,7 +23,15 @@ namespace GunControl.Implementation.ViewController
         {
             _Service = new DashboardService<DashboardViewModel>((U, P, C, A) => 
                                                            ExecuteQueryWithReturnTypeAndNetworkAccessAsync<DashboardViewModel>(U, P, C, A));
-            _Reposetory = new DashboardRepository<DashboardViewModel>(_MasterRepo, _Service);
+            _Repository = new DashboardRepository<DashboardViewModel>(_MasterRepo, _Service);
+            _Repository.OnError = (errs) =>
+            {
+                for (var count = 0; count < errs.Length; count++)
+                {
+                    if (errs[count] != "")
+                        ShowError(errs[count]);
+                }
+            };
         }
 
         public async Task Refresh()
@@ -33,7 +41,7 @@ namespace GunControl.Implementation.ViewController
 
         public void PresentFingerPrintScan()
         {
-            _Reposetory.OnFingerPrintRead();
+            _Repository.OnFingerPrintRead();
         }
 
         public void ScanNFCTag()
