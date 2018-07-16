@@ -9,6 +9,7 @@ using GunControl.Implementation.ViewModel;
 using GunControl.Interface.Repository;
 using GunControl.Root.Repository;
 using GunControl.Root.ViewModel;
+using GunControl.Trunk.Injection.Base;
 using GunControl.Trunk.ViewModel.Data;
 using Newtonsoft.Json;
 using Xamarin.Forms;
@@ -37,6 +38,9 @@ namespace GunControl.Trunk.Repository.Implementation
         }
 
         public UserMode User => DataSorce.User;
+
+        public Action<string[]> OnError { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<Action<string, IPlatformModelBase>> OnPlatformServiceCallBack { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void SetRootView(Page rootView)
         {
@@ -80,6 +84,13 @@ namespace GunControl.Trunk.Repository.Implementation
         {
             Debug.WriteLine(heading);
             Debug.WriteLine(JsonConvert.SerializeObject(objectToDump));
+        }
+        public void ReportToAllListeners(string serviceKey, IPlatformModelBase model)
+        {
+            foreach (var listener in OnPlatformServiceCallBack)
+            {
+                listener?.Invoke(serviceKey, model);
+            }
         }
 
         public void SetUserModel(LoginViewModel model)
