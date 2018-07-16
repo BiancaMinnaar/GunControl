@@ -69,6 +69,7 @@
     <Folder Include="Injection\REST\" />
     <Folder Include="Injection\NFC\" />
     <Folder Include="Injection\FingerPrint\" />
+    <Folder Include="Resources\xml\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="RestSharp">
@@ -110,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\xml\nfc.xml" />
   </ItemGroup>
   <Import Project="..\GunControl\GunControl.projitems" Label="Shared" Condition="Exists('..\GunControl\GunControl.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
