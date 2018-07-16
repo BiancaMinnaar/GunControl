@@ -24,6 +24,8 @@
                 <Label Text="User: " />
                 <Label Text="{Binding User.UserName}" />
             </StackLayout>
+            <Button Text="ScanFinger" Clicked="Handle_FingerPrintClicked" />
+            <Button Text="ScanTag" IsEnabled="false" />
         </StackLayout>
     </ContentPage.Content>
 </base:ProjectBaseContentPage>

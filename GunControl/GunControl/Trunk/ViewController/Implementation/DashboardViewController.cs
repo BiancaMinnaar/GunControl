@@ -30,5 +30,15 @@ namespace GunControl.Implementation.ViewController
         {
             InputObject.User = _MasterRepo.User;
         }
+
+        public void PresentFingerPrintScan()
+        {
+            _Reposetory.OnFingerPrintRead();
+        }
+
+        public void ScanNFCTag()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

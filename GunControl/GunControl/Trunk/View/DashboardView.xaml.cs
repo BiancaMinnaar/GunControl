@@ -29,6 +29,11 @@ namespace GunControl.Implementation.View
         {
             await _ViewController.Refresh();
         }
+
+        void Handle_FingerPrintClicked(object sender, System.EventArgs e)
+        {
+            _ViewController.PresentFingerPrintScan();
+        }
     }
 }
 
