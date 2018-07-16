@@ -20,16 +20,19 @@ namespace GunControl.Trunk.Repository.Implementation
     {
         private static MasterRepository _Reposetory = new MasterRepository();
         private static readonly object syncronisationLock = new object();
-        public MasterModel DataSorce { get; set; }
+        public MasterModel DataSource { get; set; }
         private INavigation _Navigation;
         private Page _RootView;
         public Func<string, Dictionary<string, object>, BaseNetworkAccessEnum, Task> NetworkInterface { get; set; }
         public Func<string, Dictionary<string, ParameterTypedValue>, BaseNetworkAccessEnum, Task> NetworkInterfaceWithTypedParameters { get; set; }
+        public List<Action<string, IPlatformModelBase>> OnPlatformServiceCallBack { get; set; }
 
         MasterRepository()
             : base(null)
         {
-            DataSorce = new MasterModel();
+            DataSource = new MasterModel();
+            OnPlatformServiceCallBack =
+                new List<Action<string, IPlatformModelBase>>();
         }
 
         public static MasterRepository MasterRepo
@@ -37,10 +40,8 @@ namespace GunControl.Trunk.Repository.Implementation
             get { return _Reposetory; }
         }
 
-        public UserMode User => DataSorce.User;
+        public UserMode User => DataSource.User;
 
-        public Action<string[]> OnError { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public List<Action<string, IPlatformModelBase>> OnPlatformServiceCallBack { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void SetRootView(Page rootView)
         {
@@ -56,7 +57,7 @@ namespace GunControl.Trunk.Repository.Implementation
 
         public void PushLogOut()
         {
-            DataSorce.Authenticated = false;
+            DataSource.Authenticated = false;
             _Navigation.PopToRootAsync();
         }
 
@@ -95,7 +96,7 @@ namespace GunControl.Trunk.Repository.Implementation
 
         public void SetUserModel(LoginViewModel model)
         {
-            DataSorce.User = new UserMode { UserName = model.UserName };
+            DataSource.User = new UserMode { UserName = model.UserName };
         }
 
         public void PushHomeView()

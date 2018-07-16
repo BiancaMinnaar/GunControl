@@ -69,6 +69,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\FingerPrint\IFingerPrint.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\NFC\INFCData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\NFC\INFCService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\IPlatformRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\Implementation\PlatformRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
@@ -86,5 +88,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\NFC\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\FingerPrint\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\Implementation\" />
   </ItemGroup>
 </Project>
