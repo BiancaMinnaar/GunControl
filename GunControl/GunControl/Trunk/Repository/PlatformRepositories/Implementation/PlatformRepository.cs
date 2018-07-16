@@ -37,7 +37,8 @@ namespace GunControl.Trunk.Repository.Implementation
                     Errors = errorList;
                     OnError?.Invoke(errorList);
                 };
-                platformService.PlatformHarness.Activate();
+                //Only activate on demand
+                //platformService.PlatformHarness.Activate();
             }
         }
 
