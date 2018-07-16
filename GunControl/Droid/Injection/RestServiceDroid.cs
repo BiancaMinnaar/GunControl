@@ -7,7 +7,6 @@ using System.Net;
 using GunControl.Droid.Injection;
 using GunControl.Root;
 using System;
-using System.Collections.Generic;
 
 [assembly: Dependency(typeof(RestServiceDroid))]
 namespace GunControl.Droid.Injection

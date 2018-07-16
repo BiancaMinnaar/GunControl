@@ -58,6 +58,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\IDashboardService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Service\Implementation\DashboardService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\ViewModel\Data\UserMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\BonsaiPlatformServiceRegistrationStruct.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\IPlatformBonsai.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\IPlatformModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\IPlatformModelBonsai.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\IPlatformService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformModelBonsai.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformServiceBonsai.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformSingleton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
@@ -71,5 +79,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\ViewModel\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\View\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\ViewModel\Data\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\" />
   </ItemGroup>
 </Project>
