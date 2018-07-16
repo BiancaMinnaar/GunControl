@@ -7,10 +7,14 @@ using Poz1.NFCForms.Droid;
 using Poz1.NFCForms.Abstract;
 using GunControl.Droid.Injection.Base;
 using GunControl.Trunk.Injection.Base;
+using GunControl.Droid.Injection.FingerPrintScanner;
+using GunControl.Droid.Injection.NFC;
 
 namespace GunControl.Droid
 {
-    [Activity(Theme = "@style/MyTheme", Label = "MyApp", MainLauncher = true)]  
+    [Activity(Theme = "@style/MyTheme", Label = "MyApp", MainLauncher = true)]
+    [IntentFilter(new[] { NfcAdapter.ActionTechDiscovered })]
+    [MetaData(NfcAdapter.ActionTechDiscovered, Resource = "@xml/nfc")]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         public NfcAdapter NFCdevice;
@@ -24,6 +28,10 @@ namespace GunControl.Droid
             NFCdevice = NfcManager.DefaultAdapter;
 
             Xamarin.Forms.DependencyService.Register<INfcForms, NfcForms>();
+            PlatformSingleton.Instance.PlatformServiceList.Add
+                             <FingerPrintService>(null);
+            PlatformSingleton.Instance.PlatformServiceList.Add
+                             <NFCService>(NfcManager);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             x = Xamarin.Forms.DependencyService.Get<INfcForms>() as NfcForms;

@@ -18,6 +18,7 @@ namespace GunControl.Droid.Injection.NFC
         private void HandleNewTag(object sender, NfcFormsTag e)
         {
             var message = e.NdefMessage;
+            ExecuteCallBack(new NFCData { TagData = message.ToString()});
         }
     }
 }
