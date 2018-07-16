@@ -54,12 +54,15 @@
     <None Include="Properties\AndroidManifest.xml" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Injection\RestServiceDroid.cs" />
+    <Compile Include="Injection\REST\RestServiceDroid.cs" />
+    <Compile Include="Injection\Base\PlatformBonsai.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Resources\values\" />
     <Folder Include="Injection\" />
+    <Folder Include="Injection\Base\" />
+    <Folder Include="Injection\REST\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="RestSharp">
