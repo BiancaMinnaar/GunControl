@@ -66,6 +66,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformModelBonsai.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformServiceBonsai.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformSingleton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\FingerPrint\IFingerPrint.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\NFC\INFCData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\NFC\INFCService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
@@ -81,5 +84,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\ViewModel\Data\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\" />
     <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\NFC\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Trunk\Injection\FingerPrint\" />
   </ItemGroup>
 </Project>

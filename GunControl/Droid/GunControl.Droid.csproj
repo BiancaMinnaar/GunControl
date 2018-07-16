@@ -63,6 +63,8 @@
     <Folder Include="Injection\" />
     <Folder Include="Injection\Base\" />
     <Folder Include="Injection\REST\" />
+    <Folder Include="Injection\NFC\" />
+    <Folder Include="Injection\FingerPrint\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="RestSharp">
