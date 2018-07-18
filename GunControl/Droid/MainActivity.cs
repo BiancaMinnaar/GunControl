@@ -5,7 +5,6 @@ using Acr.UserDialogs;
 using Android.Nfc;
 using Poz1.NFCForms.Droid;
 using Poz1.NFCForms.Abstract;
-using GunControl.Droid.Injection.Base;
 using GunControl.Trunk.Injection.Base;
 using GunControl.Droid.Injection.FingerPrintScanner;
 using GunControl.Droid.Injection.NFC;

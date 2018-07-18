@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using GunControl.Droid.Injection.Base;
-using GunControl.Trunk.Injection.Base;
-using Xamarin.Forms;
 
-[assembly: Dependency(typeof(PlatformBonsai))]
-namespace GunControl.Droid.Injection.Base
+namespace GunControl.Trunk.Injection.Base
 {
     public sealed class PlatformBonsai : PlatformServiceBonsai<IPlatformModelBonsai>, IPlatformBonsai<IPlatformModelBonsai>
     {

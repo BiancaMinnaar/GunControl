@@ -55,7 +55,6 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Injection\REST\RestServiceDroid.cs" />
-    <Compile Include="Injection\Base\PlatformBonsai.cs" />
     <Compile Include="Injection\FingerPrint\FingerPrint.cs" />
     <Compile Include="Injection\FingerPrint\FingerPrintService.cs" />
     <Compile Include="Injection\NFC\NFCData.cs" />
@@ -65,7 +64,6 @@
     <Folder Include="Resources\drawable\" />
     <Folder Include="Resources\values\" />
     <Folder Include="Injection\" />
-    <Folder Include="Injection\Base\" />
     <Folder Include="Injection\REST\" />
     <Folder Include="Injection\NFC\" />
     <Folder Include="Injection\FingerPrint\" />

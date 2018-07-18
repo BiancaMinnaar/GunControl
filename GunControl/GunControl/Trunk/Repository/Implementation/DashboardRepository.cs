@@ -21,8 +21,8 @@ namespace GunControl.Implementation.Repository
             : base(masterRepository)
         {
             _Service = service;
-            _PlatformBonsai = DependencyService.Get<IPlatformBonsai<IPlatformModelBonsai>>();
-            var platform = new PlatformRepository<DashboardViewModel>(masterRepository);
+            _PlatformBonsai = new PlatformBonsai();
+            var platform = new PlatformRepository<DashboardViewModel>(masterRepository, _PlatformBonsai);
             platform.OnError = (errs) =>
             {
                 OnError?.Invoke(errs);

@@ -11,10 +11,10 @@ namespace GunControl.Trunk.Repository.Implementation
     {
         IPlatformBonsai<IPlatformModelBonsai> _PlatformBonsai;
 
-        public PlatformRepository(IMasterRepository masterRepository)
+        public PlatformRepository(IMasterRepository masterRepository, IPlatformBonsai<IPlatformModelBonsai> platformBonsai)
             : base(masterRepository)
         {
-            _PlatformBonsai = DependencyService.Get<IPlatformBonsai<IPlatformModelBonsai>>();
+            _PlatformBonsai = platformBonsai;
             //??
             _PlatformBonsai.OnError = (obj) =>
             {

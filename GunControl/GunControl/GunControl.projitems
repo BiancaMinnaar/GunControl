@@ -71,6 +71,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\NFC\INFCService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\IPlatformRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Trunk\Repository\PlatformRepositories\Implementation\PlatformRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Trunk\Injection\Base\PlatformBonsai.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Root\" />
